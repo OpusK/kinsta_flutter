@@ -12,7 +12,16 @@ class App extends GetView<BottomNavController> {
       child: Obx(
         () => Scaffold(
           appBar: AppBar(),
-          body: Container(),
+          body: IndexedStack(
+            index: controller.pageIndex.value,
+            children: [
+              Container(child: Center(child: Text('HOME'))),
+              Container(child: Center(child: Text('SEARCH'))),
+              Container(child: Center(child: Text('UPLOAD'))),
+              Container(child: Center(child: Text('ACTIVITY'))),
+              Container(child: Center(child: Text('MYPAGE'))),
+            ],
+          ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
