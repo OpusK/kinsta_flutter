@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:instaclone_flutter/src/pages/upload.dart';
 
 enum PageName { HOME, SEARCH, UPLOAD, ACTIVITY, MYPAGE }
 
@@ -9,12 +11,18 @@ class BottomNavController extends GetxController {
     var page = PageName.values[value];
     switch (page) {
       case PageName.UPLOAD:
+        Get.to(() => const Upload());
+        break;
       case PageName.HOME:
       case PageName.SEARCH:
       case PageName.ACTIVITY:
       case PageName.MYPAGE:
-        pageIndex(value);
+        _changePage(value);
         break;
     }
+  }
+
+  void _changePage(int value) {
+    pageIndex(value);
   }
 }
