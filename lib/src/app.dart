@@ -14,6 +14,9 @@ class App extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
+          currentIndex: 0,
+          elevation: 0,
+          onTap: (value) {},
           items: [
             BottomNavigationBarItem(
               icon: ImageData(IconsPath.homeOff),
