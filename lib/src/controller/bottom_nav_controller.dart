@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:instaclone_flutter/src/components/message_popup.dart';
 import 'package:instaclone_flutter/src/pages/upload.dart';
 
 enum PageName { HOME, SEARCH, UPLOAD, ACTIVITY, MYPAGE }
@@ -33,6 +37,17 @@ class BottomNavController extends GetxController {
 
   Future<bool> willPopAction() async {
     if (bottomHistory.length == 1) {
+      showDialog(
+        context: Get.context!,
+        builder: (context) => MessagePopup(
+          message: '종료하시겠습니까?',
+          okCallback: () {
+            exit(0);
+          },
+          cancelCallback: Get.back,
+          title: '시스템',
+        ),
+      );
       return true;
     } else {
       bottomHistory.removeLast();
